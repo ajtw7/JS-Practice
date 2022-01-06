@@ -37,6 +37,7 @@ ages.forEach((age, index, arr) => {
 // most useful; will always create a copy of Original array
 // anything RETURNED is placed in an array
 const newAges = ages.map(age => age / 2);
+console.log(newAges)
 
 
 console.log(newAges);
