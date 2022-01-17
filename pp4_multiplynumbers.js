@@ -1,15 +1,9 @@
-var multiplyNumbers = function(num1, num2) {
-    let product = num1;
-    for (let i = 0; i < num2 - 1; i++) {
+var multiplyNumbers = function (num1, num2) {
+    let product = 0;
+    while (num2--) {
         product += num1;
     }
     return product
 }
 
-console.log(multiplyNumbers(50,5))
-
-
-
-
-
-
+console.log(multiplyNumbers(5, ))
