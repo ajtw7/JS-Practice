@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Beginning of the DOM</title>
+  </head>
+  <body>
+    <div>
+      <h1 style="color: blue">The is an example of an h1 tag</h1>
+      <h1 style="color: red">This is a second h1 tag</h1>
+      <h2>This is an exmaple of an h2 tag</h2>
+      <p>lovely lovely paragraph</p>
+    </div>
+  </body>
+  <script>
+    const myHeader = document.getElementsByTagName("H1")[0];
+    const mySecondHeader = document.getElementsByTagName("H1")[1];
+
+    setInterval(function () {
+      if (mySecondHeader.style.color === "red") {
+        mySecondHeader.style.color = "blue";
+      } else {
+        mySecondHeader.style.color = "red";
+      }
+    }, 2000);
+  </script>
+</html>
