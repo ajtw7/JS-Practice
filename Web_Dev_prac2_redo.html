@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let container = document.createElement("div");
+    container.classList.add("container");
+    container.style.height = "350px";
+    // container.style.margin = "0px auto";
+    container.style.backgroundColor = ""; // when writing CSS properties in JS, use camelCase
+    container.style.border = "1px dashed pink";
+    document.body.appendChild(container);
+
+    const copy = [
+      "Yesterday was good",
+      "Today is great",
+      "Tomorrow will be better",
+    ];
+
+    copy.forEach(function (copyItem) {
+      var paragraphItem = document.createElement("p");
+      paragraphItem.textContent = copyItem;
+      container.appendChild(paragraphItem);
+    });
+
+    //===================================================
+
+    const players = ["Joel Embiid", "James Harden", "LeBron James"];
+
+    players.forEach(function (name) {
+      let player = document.createElement("h1");
+      player.textContent = name;
+      container.appendChild(player);
+    });
+
+    //===========================================
+
+    const cities = ["Philly", "NYC,", "Miami"];
+
+    cities.forEach(function (cityItem) {
+      let city = document.createElement("h2");
+      city.textContent = cityItem;
+      document.body.appendChild(city);
+    });
+
+    const btn = document.createElement("button");
+    btn.innerText = "enable dark mode";
+    var styles = {
+      padding: "15px",
+      border: "none",
+      backgroundColor: "black",
+      color: "white",
+    };
+
+    for (let key in styles) {
+      btn.style[key] = styles[key];
+    }
+
+    container.appendChild(btn);
+
+    let dessert = document.createElement("div");
+    dessert.classList.add("dessert");
+    dessert.style.cssText = "height: 350px; background-color: red";
+    document.body.appendChild(dessert);
+
+    const iceCreamFlavor = ["chocolate", "vanilla", "strawberry"];
+    iceCreamFlavor.forEach(function (arrayItem) {
+      var flavor = document.createElement("h3");
+      flavor.innerText = arrayItem;
+      dessert.appendChild(flavor);
+    });
+
+    // ========================================================================
+
+    let darkModeIsActive = false; // boolean variables called FLAGS, used for state mgmt of applications
+    btn.addEventListener("click", function () {
+      if (darkModeIsActive) {
+        // set LIGHT styles
+        document.body.style.backgroundColor = "white";
+        dessert.style.cssText = "color: pink";
+        container.style.cssText = "background-color: white; color: black;";
+
+        btn.style.cssText =
+          "color: white; background-color: black; padding: 15px";
+
+        btn.textContent = "enable dark mode"; // set the text of the button based on state
+        darkModeIsActive = false; // set darkModeIsActive to OFF
+      } else {
+        document.body.style.backgroundColor = "black";
+        btn.style.cssText =
+          "color: black; background-color: white; padding: 15px";
+        btn.textContent = "turn on the lights";
+        darkModeIsActive = true; // set darkModeIsActive to ON
+      }
+    });
+  </script>
+</html>

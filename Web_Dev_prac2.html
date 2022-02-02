@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Heading</h1>
+  </body>
+  <script>
+    // Creating Div
+    var div = document.createElement("div");
+    div.classList.add("container");
+    document.body.appendChild(div);
+
+    // Adding 3 p elements
+    var p1 = document.createElement("p");
+    p1.textContent = "Yesterday was good";
+    div.appendChild(p1);
+
+    var p2 = document.createElement("p");
+    p2.textContent = "Today is great";
+    div.appendChild(p2);
+
+    var p3 = document.createElement("p");
+    p3.textContent = "Tomorrow will be better!";
+    div.appendChild(p3);
+
+    //====================================
+
+    // Part II
+    let btn = document.createElement("button");
+    btn.textContent = "enable dark mode";
+    btn.backgroundColor = "black";
+    btn.style.color = "white";
+    btn.style.padding = "15px";
+    btn.style.border = "none";
+    document.body.appendChild(btn);
+
+    // Part III
+    var lightsOff = btn.addEventListener("click", function () {
+      document.body.style.backgroundColor = "black";
+      div.style.backgroundColor = "yellow";
+      btn.textContent = "white";
+    });
+
+    const lightSwitch = () => {
+      if (lightsOff === true) {
+        btn.addEventListener("click", function () {
+        document.body.style.backgroundColor = "white";
+        div.style.backgroundColor = "blue";
+        btn.textContent = "enable dark mode";
+        })
+      };
+    };
+  </script>
+</html>

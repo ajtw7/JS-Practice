@@ -12,6 +12,7 @@
       <h1 style="color: red">This is a second h1 tag</h1>
       <h2>This is an exmaple of an h2 tag</h2>
       <p>lovely lovely paragraph</p>
+      <button>Click Me</button>
     </div>
   </body>
   <script>
@@ -25,5 +26,25 @@
         mySecondHeader.style.color = "red";
       }
     }, 2000);
+
+    // Creating Dynamic Elements
+    var response = {
+      body: [
+        "This is some HTML content for you guys",
+        "SuperBowl 56 will consist of the Bengals and Rams.",
+      ],
+    };
+
+    var button = document.querySelector("button"); //Query selector only takes the first element of the page; works for advanced selectors & pseudo-selectors as well
+    var paragraphs = document.querySelectorAll("p"); // querySelectorAll is the remedy for above
+
+    // Event Listener
+    button.addEventListener("click", function () {
+      for (p of paragraphs) {
+        p.style.color = 'lightblue'
+      }
+    });
   </script>
 </html>
+
+<!-- Event listeners allow your code to reply to events -->
