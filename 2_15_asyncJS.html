@@ -5,29 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script>
-      src = "https://code.jquery.com/jquery-3.6.0.js";
-      integrity = "sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=";
-      crossorigin = "anonymous";
-    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <h2>Asynchronous Javascript and XML</h2>
     <!-- aka XML HttpRequest: update a webpage w/o reloading; 
         request/receive data from a server (after loading);
         send data to a server in the bkg -->
-    <div id="demo"></div>
+    <div class="demo">
+      <button id="dom">Click Me</button>
+      <button id="jq">Click Me</button>
+    </div>
   </body>
   <script>
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        console.log('this is just a test')
-      if (this.readyState == 4 && this.status == 200) {
-        // Typical action to be performed when the document is ready:
-        document.getElementById("demo").innerHTML = xhttp.responseText;
-      }
-    };
-    xhttp.open("GET", "https://datausa.io/api/data?drilldowns=Nation&measures=Population", true);
-    xhttp.send();
+    // DOM
+    let newHeading = document.createElement("h2");
+    newHeading.textContent = "Its a new day";
+    newHeading.classList.add("vanilla-p");
+    document.querySelector(".demo").appendChild(newHeading);
+
+    var newParagraph = document.createElement("p");
+    newParagraph.textContent = "This is vanilla content";
+    newParagraph.classList.add("vanilla-p");
+    document.querySelector(".demo").appendChild(newParagraph);
+
+    const secondParagraph = document.createElement("p");
+    secondParagraph.textContent = "dsf;afhkafhjakjhfaklh";
+    document.body.appendChild(secondParagraph);
+
+    // JQuery
+    $(`<p>THIS IS A PARAGRAPH</p>`).appendTo($(".demo"));
+    let btn = $("jq");
   </script>
 </html>
