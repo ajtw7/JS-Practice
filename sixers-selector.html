@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sixers Selector</title>
   </head>
   <style>
     html,
@@ -14,8 +14,8 @@
       width: 100%;
     }
 
-    .container {
-      width: 80%;
+    .wrapper {
+      width: 50%;
       height: 50%;
       border: 1px solid black;
       margin: 10px auto;
@@ -28,16 +28,18 @@
     .selector {
       display: flex;
       border-bottom: 1px solid grey;
-      background-color: #f1f1f1;
+      background-color: red;
+      color: white;
     }
 
-    .tab {
+    .card {
       padding: 10px;
     }
 
-    .tab:hover {
+    .card:hover {
       cursor: pointer;
-      background-color: darkgray;
+      background-color: white;
+      color: black;
     }
 
     .content-body {
@@ -49,64 +51,61 @@
     }
 
     .tab-active {
-      background-color: darkgrey;
+      background-color: blue;
     }
   </style>
   <body>
-    <div class="container">
+    <div class="wrapper">
       <div class="selector">
-        <div class="tab tab-active">Vanilla</div>
-        <div class="tab">Chocolate</div>
-        <div class="tab">Strawberry</div>
+        <div id="jEmbiid" class="card card-active">Joel Embiid</div>
+        <div id="jHarden" class="card">James Harden</div>
+        <div id="tMaxey" class="card">Tyrese Maxey</div>
       </div>
       <div class="content-container">
-        <div id="Vanilla" class="content-body show-active">
-          <h4>Vanilla</h4>
-          <p>The most popular ice cream flavor on the planet.</p>
+        <div class="content-body show-active">
+          <h2>Center</h2>
+          <p>21</p>
         </div>
-        <div id="Chocolate" class="content-body">
-          <h4>Chocolate</h4>
-          <p>The richest flavor on the planet.</p>
+        <div class="content-body">
+          <h2>Point Guard</h2>
+          <p>1</p>
         </div>
-        <div id="Strawberry" class="content-body">
-          <h4>Strawberry</h4>
-          <p>Just another flavor people like, supposedly.</p>
+        <div class="content-body">
+          <h2>Shooting Guard</h2>
+          <p>0</p>
         </div>
       </div>
     </div>
   </body>
   <script>
-    
-     //   select tab class and loop through (initiator)
-     var tabs = document.getElementsByClassName("tab");
-    for (tab of tabs) {
+    //   select tab class and loop through (initiator)
+    var cards = document.getElementsByClassName("card");
+    for (var card of cards) {
       //  add click listener to each tab
-      tab.addEventListener("click", function (e) {
+      card.addEventListener("click", function (e) {
         console.log(e.currentTarget);
         setNewActive(e.currentTarget);
       });
     }
-    
-    
+
     // function to remove show-active class & add to clicked
     function setNewActive(el) {
       // select all .content-body
       var contentBodies = document.getElementsByClassName("content-body");
-      //remove. show-active
+      //remove .show-active
       for (var contentBody of contentBodies) {
         contentBody.classList.remove("show-active");
       }
+
       // add .show-active (back) to clicked
       document
         .getElementById(el.textContent.trim())
         .classList.add("show-active");
 
-      var tab = document.getElementsByClassName("tab");
-      for (var tab of tabs) {
-        tab.classList.remove("tab-active");
+      var card = document.getElementsByClassName("card");
+      for (var card of cards) {
+        card.classList.remove("tab-active");
       }
     }
-
-   
   </script>
 </html>
