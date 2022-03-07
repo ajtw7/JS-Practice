@@ -14,8 +14,8 @@
       width: 100%;
     }
 
-    .wrapper {
-      width: 50%;
+    .container {
+      width: 80%;
       height: 50%;
       border: 1px solid black;
       margin: 10px auto;
@@ -28,8 +28,7 @@
     .selector {
       display: flex;
       border-bottom: 1px solid grey;
-      background-color: red;
-      color: white;
+      background-color: #f1f1f1;
     }
 
     .card {
@@ -38,7 +37,7 @@
 
     .card:hover {
       cursor: pointer;
-      background-color: white;
+      background-color: darkgrey;
       color: black;
     }
 
@@ -50,27 +49,27 @@
       display: block;
     }
 
-    .tab-active {
-      background-color: blue;
+    .card-active {
+      background-color: darkgrey;
     }
   </style>
   <body>
-    <div class="wrapper">
+    <div class="container">
       <div class="selector">
-        <div id="jEmbiid" class="card card-active">Joel Embiid</div>
-        <div id="jHarden" class="card">James Harden</div>
-        <div id="tMaxey" class="card">Tyrese Maxey</div>
+        <div class="card card-active">Embiid</div>
+        <div class="card">Harden</div>
+        <div class="card">Maxey</div>
       </div>
       <div class="content-container">
-        <div class="content-body show-active">
+        <div id="Embiid" class="content-body show-active">
           <h2>Center</h2>
           <p>21</p>
         </div>
-        <div class="content-body">
+        <div id="Harden" class="content-body">
           <h2>Point Guard</h2>
           <p>1</p>
         </div>
-        <div class="content-body">
+        <div id="Maxey" class="content-body">
           <h2>Shooting Guard</h2>
           <p>0</p>
         </div>
@@ -78,16 +77,6 @@
     </div>
   </body>
   <script>
-    //   select tab class and loop through (initiator)
-    var cards = document.getElementsByClassName("card");
-    for (var card of cards) {
-      //  add click listener to each tab
-      card.addEventListener("click", function (e) {
-        console.log(e.currentTarget);
-        setNewActive(e.currentTarget);
-      });
-    }
-
     // function to remove show-active class & add to clicked
     function setNewActive(el) {
       // select all .content-body
@@ -104,8 +93,18 @@
 
       var card = document.getElementsByClassName("card");
       for (var card of cards) {
-        card.classList.remove("tab-active");
+        card.classList.remove("card-active");
       }
+    }
+
+    //   select tab class and loop through (initiator)
+    var cards = document.getElementsByClassName("card");
+    for (var card of cards) {
+      //  add click listener to each card
+      card.addEventListener("click", function (e) {
+        console.log(e.currentTarget);
+        setNewActive(e.currentTarget);
+      });
     }
   </script>
 </html>
