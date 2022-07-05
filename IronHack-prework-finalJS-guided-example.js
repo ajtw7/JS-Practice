@@ -11,7 +11,10 @@
 const player = {
     positionX: 1,
     positionY: 1,
-    path: [{positionX: 1, positionY: 1}]
+    path: [{
+        positionX: 1,
+        positionY: 1
+    }]
 };
 
 // initialize the board and 3 rows
@@ -65,7 +68,10 @@ function placeHorizontal(player, command) {
         console.log(`Player has position: x=${player.positionX}, y=${player.positionY}`)
 
         // record the position moved to on the board
-        let newPosition = {positionX: player.positionX, positionY: player.positionY};
+        let newPosition = {
+            positionX: player.positionX,
+            positionY: player.positionY
+        };
         // add new position to the PATH property [ array of objects ]
         player.path.push(newPosition);
     } else {
@@ -74,21 +80,58 @@ function placeHorizontal(player, command) {
 
 }
 
-// moving player to the left
-placeHorizontal(player, 'l')
-console.log(player)
+// loop through array of paths to see where Player goes
 
-// // moving player to the left
-placeHorizontal(player, 'l')
-console.log(player)
+for (let i = 0; i < player.path.length; i++) {
+    console.log(`Path ${i} ==>x=${player.path[i].positionY}, y=${player.path[i].positionX}`)
+}
 
-// moving player to the right
-placeHorizontal(player, 'r')
-console.log(player)
 
-// // moving player to the right
-// placeHorizontal(player, 'r')
-// console.log(player)
 
-// placeHorizontal(player, 'l')
-// console.log(player)
+// move the player vertically
+
+function placeVertical(player, command) {
+    if (player.positionX >= 0 && player.positionX < 2) {
+        if (command === 'u') {
+            player.positionX--;
+        } else {
+            player.positionX++;
+        }
+        console.log(`Player has position: x=${player.positionX}, y=${player.positionY}`)
+
+        // define (store) the newPosition variable
+        let newPosition = {
+            positionX: player.positionX,
+            positionY: player.positionY
+        };
+        // add newPosition to path array
+        player.path.push(newPosition);
+    } else {
+        console.log("You can't place player outside of the board!")
+    }
+}
+
+
+function command(player, orders) {
+    for (let i = 0; i < orders.length; i++) {
+        let order = orders[i];
+        switch (order) {
+            case 'l': //left
+                placeHorizontal(player, order);
+                break
+            case 'r': //right
+                placeHorizontal(player, order);
+                break
+            case 'u': //up
+                placeVertical(player, order);
+                break
+            case 'd': //down
+                placeVertical(player, order);
+                break
+        }
+
+    }
+    console.log(player.path)
+}
+
+command(player, 'lurddl')
